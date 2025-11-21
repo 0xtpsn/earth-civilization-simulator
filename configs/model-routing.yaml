@@ -1,0 +1,39 @@
+# LLM Model Routing Rules
+# Defines which models to use for different tasks
+
+routing:
+  # Cheap models for high-volume tasks
+  npc_dialogue:
+    provider: openai
+    model: gpt-3.5-turbo
+    max_tokens: 150
+
+  # Strong models for important decisions
+  leader_decisions:
+    provider: openai
+    model: gpt-4
+    max_tokens: 500
+
+  # Medium models for general tasks
+  structure_naming:
+    provider: openai
+    model: gpt-3.5-turbo
+    max_tokens: 100
+
+  # Translation uses dedicated models
+  translation:
+    provider: openai
+    model: gpt-3.5-turbo
+    max_tokens: 200
+
+  # Knowledge retrieval assistance
+  knowledge_retrieval:
+    provider: openai
+    model: gpt-4
+    max_tokens: 300
+
+# Fallback rules
+fallback:
+  default_provider: openai
+  default_model: gpt-3.5-turbo
+

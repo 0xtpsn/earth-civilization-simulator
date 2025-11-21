@@ -1,0 +1,32 @@
+# Development Configuration
+
+environment: development
+
+logging:
+  level: debug
+  format: json
+
+simulation:
+  tick_rate: 1  # seconds per tick
+  fast_forward_enabled: true
+
+api:
+  host: localhost
+  port: 8000
+  cors_origins:
+    - http://localhost:3000
+    - http://localhost:25565
+
+database:
+  connection_pool_size: 5
+  query_timeout: 30
+
+llm:
+  default_provider: openai
+  cache_enabled: true
+  rate_limit: 100  # requests per minute
+
+observability:
+  metrics_enabled: true
+  inspector_enabled: true
+
