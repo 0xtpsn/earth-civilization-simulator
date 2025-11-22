@@ -28,5 +28,5 @@ Source files and experiment fixtures that feed the simulation.
 This data feeds into:
 - **`backend/history/loaders/`** — Historical data import
 - **`backend/world-generation/`** — Geography and structure data
-- **`backend/simulation-engine/scenarios/`** — Starting states
+- **`backend/simulation_engine/scenarios/`** — Starting states
 - **`tools/importers/`** — Data processing

@@ -1,0 +1,31 @@
+# Production Configuration
+
+environment: production
+
+logging:
+  level: info
+  format: json
+
+simulation:
+  tick_rate: 1  # seconds per tick
+  fast_forward_enabled: true
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  cors_origins: []  # Configure allowed origins for production
+
+database:
+  connection_pool_size: 20
+  max_overflow: 10
+  query_timeout: 30
+
+llm:
+  default_provider: openai
+  cache_enabled: true
+  rate_limit: 100  # requests per minute
+
+observability:
+  metrics_enabled: true
+  inspector_enabled: false  # Disable in production for security
+

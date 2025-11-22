@@ -19,31 +19,31 @@ The foundational infrastructure for the simulation is now in place.
 - ✅ Event publishing support
 - ✅ Event bus integration
 
-#### 3. **State Management** (`backend/simulation-engine/state.py`)
+#### 3. **State Management** (`backend/simulation_engine/state.py`)
 - ✅ `WorldState` - Canonical world state object
 - ✅ Serializable state (to_dict/from_dict)
 - ✅ Engine-specific state storage
 - ✅ Time, location, scenario tracking
 
-#### 4. **Event Bus** (`backend/simulation-engine/event_bus.py`)
+#### 4. **Event Bus** (`backend/simulation_engine/event_bus.py`)
 - ✅ Pub/sub event system
 - ✅ Event history tracking
 - ✅ Wildcard subscriptions
 - ✅ Async event handling
 
-#### 5. **Determinism** (`backend/simulation-engine/determinism.py`)
+#### 5. **Determinism** (`backend/simulation_engine/determinism.py`)
 - ✅ `DeterministicRandom` - Seeded random number generator
 - ✅ Global RNG access
 - ✅ Reproducible randomness
 
-#### 6. **Tick Scheduler** (`backend/simulation-engine/tick.py`)
+#### 6. **Tick Scheduler** (`backend/simulation_engine/tick.py`)
 - ✅ `TickScheduler` - Manages simulation time progression
 - ✅ Configurable tick rate
 - ✅ Pause/resume functionality
 - ✅ Fast-forward capability
 - ✅ Time jumping (for time travel)
 
-#### 7. **Orchestrator** (`backend/simulation-engine/orchestrator.py`)
+#### 7. **Orchestrator** (`backend/simulation_engine/orchestrator.py`)
 - ✅ `SimulationOrchestrator` - Master coordinator
 - ✅ Engine registration
 - ✅ Lifecycle management

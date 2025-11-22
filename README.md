@@ -15,7 +15,7 @@ This is a mono-repo with two main components:
 - **Framework**: FastAPI (async REST/WebSocket API)
 - **Data Science**: pandas, numpy, scipy, scikit-learn
 - **AI/LLM**: OpenAI, Anthropic, LangChain
-- **Vector DB**: ChromaDB
+- **Vector DB**: pgvector (PostgreSQL extension)
 - **Database**: PostgreSQL + SQLAlchemy
 - **Caching**: Redis
 - **Package Management**: setuptools (pyproject.toml)
@@ -27,7 +27,7 @@ This is a mono-repo with two main components:
 - Python 3.11 or higher
 - PostgreSQL (for structured data)
 - Redis (for caching)
-- (Optional) ChromaDB (for vector storage)
+- PostgreSQL with PostGIS and pgvector extensions
 
 ### Installation
 
@@ -80,7 +80,7 @@ pytest --cov=backend  # With coverage
 - **`economy/`** — Macro/micro economics, markets, production, trade, labor
 - **`money/`** — Financial accounts, wallets, assets, transactions, banking
 - **`knowledge/`** — RAG foundation, era-bounded knowledge, retrieval systems
-- **`simulation-engine/`** — Master orchestrator: tick loop, state, rules, determinism
+- **`simulation_engine/`** — Master orchestrator: tick loop, state, rules, determinism
 - **`commands/`** — Player/auditor command layer (decoupled from client)
 - **`llm/`** — Model providers, prompts, routing, safety constraints
 - **`timeline/`** — Time travel, branching realities, snapshots, replay

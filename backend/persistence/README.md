@@ -11,11 +11,12 @@ Database connectors and repositories — keeps storage cleanly decoupled from lo
   - Historical records
   - Relational schemas
 
-- **`vector-db/`** — Embedding storage
+- **`vector-db/`** — Embedding storage (via pgvector)
   - Memory embeddings
   - Knowledge embeddings
   - Semantic search
   - Similarity queries
+  - Uses PostgreSQL pgvector extension (integrated with postgres/)
 
 - **`cache/`** — Fast access layer
   - Redis or similar

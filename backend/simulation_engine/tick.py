@@ -83,7 +83,7 @@ class TickScheduler:
                 except Exception as e:
                     logger.error(f"Error ticking engine {engine.name}: {e}", exc_info=True)
 
-            logger.debug(f"Tick {self.state.tick_count} completed at {self.state.current_time}")
+            logger.info(f"Day {self.state.tick_count}: {self.state.current_time}")
 
         except Exception as e:
             logger.error(f"Error in tick loop: {e}", exc_info=True)

@@ -50,7 +50,7 @@ Time travel, branching realities, snapshots, and replay — makes "go back and c
 ## Integration
 
 Works closely with:
-- **`simulation-engine/`** — For state snapshots
+- **`simulation_engine/`** — For state snapshots
 - **`persistence/`** — For storage
 - **`npc/`** — For memory reset on time travel
 

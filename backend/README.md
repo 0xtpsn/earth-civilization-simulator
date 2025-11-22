@@ -17,7 +17,7 @@ The simulation brain — the core product that models human civilization across 
 
 ### Supporting Systems
 - **`knowledge/`** — RAG, era-bounded knowledge, retrieval, embeddings
-- **`simulation-engine/`** — Tick loop, state management, rules, determinism
+- **`simulation_engine/`** — Tick loop, state management, rules, determinism
 - **`timeline/`** — Time travel, branching, snapshots, replay
 - **`commands/`** — Player command layer (timejump, spawn, inspect, etc.)
 - **`llm/`** — Model providers, prompts, routing, safety

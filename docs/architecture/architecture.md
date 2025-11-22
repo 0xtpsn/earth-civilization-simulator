@@ -1,7 +1,7 @@
 # Architecture Skeleton
 
 ## Layering
-- Simulation runtime (`backend/simulation-engine/`): tick loop, scheduler, event bus, orchestration policies.
+- Simulation runtime (`backend/simulation_engine/`): tick loop, scheduler, event bus, orchestration policies.
 - Engines (`backend/`): NPC, economy, ideologies, world-generation, history, timeline, localization, knowledge.
 - Platform (`backend/`): shared contracts, state mgmt, persistence, observability, LLM adapters.
 - Data (`data/`): seeds, reference layers, scenario experiments.

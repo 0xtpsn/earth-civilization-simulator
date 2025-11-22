@@ -23,7 +23,7 @@ All critical scaling components have been implemented.
   - Exists/TTL checking
 
 ### 3. Event Queue with Backpressure ✅
-- **File**: `backend/simulation-engine/event_bus.py` (updated)
+- **File**: `backend/simulation_engine/event_bus.py` (updated)
 - **Features**:
   - Async queue with configurable size
   - Multiple worker threads
@@ -32,7 +32,7 @@ All critical scaling components have been implemented.
   - Non-blocking publish
 
 ### 4. State Compression & Incremental Updates ✅
-- **File**: `backend/simulation-engine/state.py` (updated)
+- **File**: `backend/simulation_engine/state.py` (updated)
 - **Features**:
   - State diffing (only save changes)
   - Gzip compression
@@ -70,7 +70,7 @@ All critical scaling components have been implemented.
 ## ✅ Phase 3: Optimization (COMPLETE)
 
 ### 8. Lazy Loading & State Partitioning ✅
-- **File**: `backend/simulation-engine/state.py` (updated)
+- **File**: `backend/simulation_engine/state.py` (updated)
 - **Features**:
   - Lazy loader registration
   - Partition-based loading
