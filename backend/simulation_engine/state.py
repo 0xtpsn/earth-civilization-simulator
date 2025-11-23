@@ -12,9 +12,22 @@ from backend.shared.types import AgentID, Era, Location, ScenarioID, Time, Timel
 logger = logging.getLogger(__name__)
 
 
+# WorldState schema version - increment when breaking changes occur
+WORLD_STATE_VERSION = 1
+
+
 @dataclass
 class WorldState:
-    """Canonical world state - everything that can be serialized and restored."""
+    """Canonical world state - everything that can be serialized and restored.
+    
+    This is a versioned schema. When engine schemas change, increment WORLD_STATE_VERSION
+    and implement migration hooks in migrate_state().
+    
+    Think "database migrations, but for world reality."
+    """
+
+    # Schema versioning
+    state_version: int = field(default=WORLD_STATE_VERSION)
 
     # Time and scenario
     current_time: Time
@@ -88,6 +101,7 @@ class WorldState:
     def to_dict(self) -> Dict[str, Any]:
         """Convert state to dictionary for serialization."""
         return {
+            "state_version": self.state_version,
             "current_time": (
                 self.current_time.isoformat()
                 if isinstance(self.current_time, datetime)
@@ -106,8 +120,23 @@ class WorldState:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "WorldState":
-        """Create state from dictionary."""
+        """Create state from dictionary with automatic migration.
+        
+        If the stored state_version is older than current, migrates the state.
+        """
+        stored_version = data.get("state_version", 0)
+        
+        # Migrate if needed
+        if stored_version < WORLD_STATE_VERSION:
+            logger.info(f"Migrating WorldState from version {stored_version} to {WORLD_STATE_VERSION}")
+            data = cls.migrate_state(data, stored_version, WORLD_STATE_VERSION)
+        
+        # Ensure state_version is set after migration
+        if "state_version" not in data:
+            data["state_version"] = WORLD_STATE_VERSION
+        
         return cls(
+            state_version=data["state_version"],
             current_time=Time(datetime.fromisoformat(data["current_time"])),
             scenario_id=ScenarioID(data["scenario_id"]),
             timeline_id=TimelineID(data["timeline_id"]),
@@ -116,9 +145,51 @@ class WorldState:
             engine_states=data.get("engine_states", {}),
             tick_count=data.get("tick_count", 0),
             seed=data.get("seed", 42),
-            created_at=datetime.fromisoformat(data["created_at"]),
-            updated_at=datetime.fromisoformat(data["updated_at"]),
+            created_at=datetime.fromisoformat(data.get("created_at", datetime.now().isoformat())),
+            updated_at=datetime.fromisoformat(data.get("updated_at", datetime.now().isoformat())),
         )
+    
+    @staticmethod
+    def migrate_state(data: Dict[str, Any], from_version: int, to_version: int) -> Dict[str, Any]:
+        """Migrate state from one version to another.
+        
+        Args:
+            data: State dictionary to migrate
+            from_version: Source version
+            to_version: Target version
+            
+        Returns:
+            Migrated state dictionary
+            
+        Example migration:
+            if from_version == 0 and to_version == 1:
+                # Add new field with default value
+                data["new_field"] = default_value
+                data["state_version"] = 1
+        """
+        # Apply migrations sequentially
+        current = from_version
+        while current < to_version:
+            next_version = current + 1
+            
+            # Version 0 -> 1: Add state_version field if missing
+            if current == 0 and next_version == 1:
+                if "state_version" not in data:
+                    data["state_version"] = 1
+                current = next_version
+                continue
+            
+            # Add future migrations here:
+            # if current == 1 and next_version == 2:
+            #     # Migration logic
+            #     current = next_version
+            #     continue
+            
+            # If no migration defined, just update version
+            data["state_version"] = next_version
+            current = next_version
+        
+        return data
 
     def create_diff(self, previous_state: "WorldState") -> Dict[str, Any]:
         """Create a diff between this state and a previous state.

@@ -15,7 +15,29 @@ logger = logging.getLogger(__name__)
 
 
 class SimulationOrchestrator:
-    """Master orchestrator for the simulation."""
+    """
+    Master orchestrator for the simulation.
+    
+    This is Phase 7: The Simulation Orchestrator (THE ACTUAL GAME), part of Phase 1: The Universe.
+    
+    The orchestrator is THE ACTUAL GAME - the system that:
+    - Binds all phases together
+    - Updates the world each tick
+    - Processes actions
+    - Evolves the universe
+    - Handles consequences
+    - Drives timelines
+    - Generates the next moment
+    
+    The orchestrator is what makes the simulation feel like a living civilization
+    and not just a bunch of disconnected systems.
+    
+    ARCHITECTURE:
+    - Belongs in simulation_engine/ (not a separate runtime)
+    - Orchestrates all phase engines but doesn't know their internals
+    - Engines communicate via EventBus and WorldState, not direct calls
+    - Only sequences and validates; never invents content itself
+    """
 
     def __init__(self, seed: int = 42):
         """Initialize the orchestrator.

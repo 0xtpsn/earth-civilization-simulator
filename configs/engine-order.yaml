@@ -1,0 +1,120 @@
+# Engine Priority Order and Dependency Graph
+#
+# This file defines the execution order and dependencies for all simulation engines.
+# The orchestrator uses this to determine tick sequencing and ensure dependencies
+# are satisfied before engines run.
+#
+# PRIORITY RULES:
+# - Lower priority number = runs earlier
+# - Engines with dependencies must run after their dependencies
+# - Systems Layer services can run at any priority (they're cross-cutting)
+#
+# DEPENDENCY RULES:
+# - Engines can depend on other engines or Systems Layer services
+# - Phase engines cannot depend on other phase engines (enforced by architecture)
+# - All engines can depend on Systems Layer services
+#
+# When adding new engines (climate, war, disease, tech diffusion), add them here
+# with appropriate priority and dependencies.
+
+engines:
+  # Phase 1: Universe (simulation_engine/)
+  - name: simulation_engine
+    priority: 0
+    dependencies: []
+    description: "Phase 1: Universe spine - WorldState, ticks, determinism"
+  
+  # Phase 2: History
+  - name: history
+    priority: 10
+    dependencies: []
+    description: "Phase 2: Truth & context layer - era profiles, signals"
+  
+  # Foundational: Timeline (must run early for state management)
+  - name: timeline
+    priority: 5
+    dependencies: ["simulation_engine"]
+    description: "Foundational: Time travel, branching, snapshots"
+  
+  # Foundational: Knowledge (RAG, era knowledge)
+  - name: knowledge
+    priority: 15
+    dependencies: ["history"]
+    description: "Foundational: RAG, era-bounded knowledge retrieval"
+  
+  # Phase 3: Appearance (WorldGen)
+  - name: world_generation
+    priority: 20
+    dependencies: ["history", "simulation_engine"]
+    description: "Phase 3: Physical world blueprints - reads from History via WorldState"
+  
+  # Phase 4: People
+  - name: npc
+    priority: 30
+    dependencies: ["history", "knowledge", "world_generation"]
+    description: "Phase 4: Populations and roles - uses Knowledge for era info"
+  
+  # Societal behavior engines
+  - name: economy
+    priority: 40
+    dependencies: ["history", "npc"]
+    description: "Societal behavior: Economic simulation"
+  
+  - name: money
+    priority: 45
+    dependencies: ["economy"]
+    description: "Societal behavior: Currency and transactions"
+  
+  - name: ideologies
+    priority: 50
+    dependencies: ["history", "npc"]
+    description: "Societal behavior: Belief systems and diffusion"
+  
+  # Systems Layer services (can run at any priority, but listed for completeness)
+  - name: llm
+    priority: 100
+    dependencies: []
+    description: "Systems Layer: LLM routing, safety (Phase 5: Consciousness)"
+  
+  - name: observability
+    priority: 200
+    dependencies: []
+    description: "Systems Layer: Logs, metrics, inspector"
+  
+  - name: localization
+    priority: 200
+    dependencies: []
+    description: "Systems Layer: Translation, language support"
+  
+  - name: commands
+    priority: 200
+    dependencies: []
+    description: "Systems Layer: Player interactions"
+  
+  - name: api
+    priority: 300
+    dependencies: []
+    description: "Systems Layer: Renderer interface"
+
+# Future engines (examples - uncomment and configure when implementing):
+#
+# - name: climate
+#   priority: 25
+#   dependencies: ["world_generation", "history"]
+#   description: "Climate simulation - affects biomes, agriculture"
+#
+# - name: war
+#   priority: 60
+#   dependencies: ["npc", "economy", "ideologies"]
+#   description: "Warfare simulation - conflicts, battles"
+#
+# - name: disease
+#   priority: 35
+#   dependencies: ["npc", "world_generation"]
+#   description: "Disease simulation - epidemics, health"
+#
+# - name: tech_diffusion
+#   priority: 55
+#   dependencies: ["economy", "ideologies", "knowledge"]
+#   description: "Technology diffusion - innovation spread"
+

@@ -5,43 +5,11 @@ The master orchestrator of time, rules, and systems — the "physics engine for 
 ## Structure
 
 - **`tick/`** — Time stepping
-  - Daily/weekly stepping
-  - Fast-forward batching
-  - Time dilation
-  - Tick scheduling
-
 - **`state/`** — Canonical world state
-  - Everything serializable
-  - Global state object
-  - State snapshots
-  - State diffs
-
 - **`rules/`** — Hard constraints
-  - Laws and legal systems
-  - Physics constraints
-  - Capacity limits
-  - Era limits
-  - Validation rules
-
 - **`event-propagation/`** — Ripple effects
-  - How actions ripple across systems
-  - Market reactions
-  - Political responses
-  - Social diffusion
-  - Cascading effects
-
 - **`determinism/`** — Reproducibility
-  - Seeds and random streams
-  - Replay correctness
-  - Deterministic execution
-  - Branch point tracking
-
 - **`scenarios/`** — Spawn presets
-  - "Singapore 2025"
-  - "Cleveland 1860"
-  - "Jakarta 1998"
-  - Scenario definitions
-  - Initial state generation
 
 ## Responsibilities
 

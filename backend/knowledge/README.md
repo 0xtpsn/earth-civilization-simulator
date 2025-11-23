@@ -5,35 +5,10 @@ RAG foundation and "what agents know" — the library of reality for the simulat
 ## Structure
 
 - **`corpora/`** — Document storage
-  - Primary sources
-  - Historical summaries
-  - Laws and legal texts
-  - Newspapers and periodicals
-  - Era-appropriate documents
-
 - **`retrieval/`** — Search and ranking
-  - Search interface for NPC/LLM
-  - Relevance ranking
-  - Context extraction
-  - Query processing
-
 - **`embeddings/`** — Vector representations
-  - Vector DB connectors
-  - Embedding generation
-  - Similarity search
-  - Semantic indexing
-
 - **`era-knowledge/`** — Temporal constraints
-  - What is available to be known in each era
-  - Anachronism prevention
-  - Knowledge availability windows
-  - Historical information limits
-
 - **`validation/`** — Guardrails
-  - Prevent future knowledge leakage
-  - Era-bounded knowledge checks
-  - Anachronism detection
-  - Source verification
 
 ## Purpose
 

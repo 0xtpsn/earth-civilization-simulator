@@ -5,22 +5,8 @@ Language and translation logic — handles multilingual support and translation 
 ## Structure
 
 - **`languages/`** — Supported languages
-  - English (interface language)
-  - Chinese (interface language)
-  - NPC native languages (all eras)
-  - Language metadata
-
 - **`translation/`** — Translation pipeline
-  - Real-time NPC ↔ player translation
-  - AI-powered translation
-  - Context-aware translation
-  - Cultural nuance preservation
-
 - **`fairness/`** — Translation balancing
-  - "Translation ON/OFF advantage" rules
-  - Fairness mechanics
-  - Difficulty scaling
-  - Authenticity vs accessibility tradeoffs
 
 ## Key Features
 

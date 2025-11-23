@@ -5,28 +5,9 @@ Time travel, branching realities, snapshots, and replay — makes "go back and c
 ## Structure
 
 - **`event-log/`** — Append-only action/event sourcing
-  - All actions recorded
-  - Immutable log
-  - Event replay capability
-  - Chronological ordering
-
 - **`snapshots/`** — Periodic frozen world states
-  - Full state captures
-  - Compressed storage
-  - Snapshot intervals
-  - State restoration
-
 - **`branching/`** — Forked timelines
-  - New seeds for branches
-  - Divergence markers
-  - Branch metadata
-  - Timeline comparison
-
 - **`replay/`** — Reconstruction
-  - Reconstruct any date from log + snapshot
-  - Fast-forward through history
-  - State restoration
-  - Deterministic replay
 
 ## Features
 
@@ -46,11 +27,4 @@ Time travel, branching realities, snapshots, and replay — makes "go back and c
 - Fast-forward through time
 - Step through events
 - Debug simulation behavior
-
-## Integration
-
-Works closely with:
-- **`simulation_engine/`** — For state snapshots
-- **`persistence/`** — For storage
-- **`npc/`** — For memory reset on time travel
 

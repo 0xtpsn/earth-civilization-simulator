@@ -1,33 +1,32 @@
 # Shared Module
 
-Tiny shared abstractions and core types — universal utilities used across modules.
+Universal helpers, types, constants, and utilities used across all modules.
 
-## Structure
+## Architecture Boundaries
 
-- **`types/`** — Core type definitions
-  - Base types (Time, Location, ID, etc.)
-  - Common interfaces
-  - Type utilities
+This module can be imported by:
+- ✅ All phase engines
+- ✅ Systems Layer services
+- ✅ Infrastructure modules
+- ✅ Phase 1 + Phase 7 (simulation_engine)
 
-- **`constants/`** — Shared constants
-  - Configuration constants
-  - Magic numbers
-  - Default values
+## Key Files
 
-- **`utils/`** — Utility functions
-  - Common helpers
-  - Math utilities
-  - String manipulation
-  - Date/time helpers
+- **`interfaces.py`** - Core interfaces (Engine, EventPublisher, EventSubscriber)
+- **`base_engine.py`** - BaseEngine class for all engines
+- **`types.py`** - Type definitions (AgentID, Time, Location, etc.)
+- **`constants.py`** - Constants (DEFAULT_SEED, DEFAULT_TICK_RATE)
+- **`architecture.py`** - Architecture boundary enforcement and documentation
+- **`batch_processor.py`** - Batch processing utilities
+- **`task_queue.py`** - Async task queue
+- **`resource_limits.py`** - Resource monitoring and limits
 
-## Design Principle
+## Architecture Rules
 
-**Only universal small stuff** — Don't let this become a junk drawer. Only put things here that are truly shared across multiple modules and are too small to warrant their own module.
+See `architecture.py` for detailed architecture boundary documentation.
 
-## Guidelines
-
-- If it's used by 2+ modules → consider shared
-- If it's domain-specific → keep in domain module
-- If it's large → consider its own module
-- Keep it minimal and focused
+**Key Rule**: Phase engines cannot directly import other phase engines. They must use:
+- EventBus (pub/sub)
+- WorldState (shared state)
+- Systems Layer services
 

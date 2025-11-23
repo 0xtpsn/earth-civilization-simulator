@@ -5,52 +5,12 @@ Macro and micro economic simulation — markets, production, trade, labor, and s
 ## Structure
 
 - **`macro/`** — Aggregate economic indicators
-  - GDP proxies
-  - Inflation/deflation
-  - Inequality metrics
-  - Growth/decline cycles
-  - Structural-demographic variables
-
 - **`markets/`** — Goods and services markets
-  - Supply and demand dynamics
-  - Price discovery
-  - Scarcity effects
-  - Bubbles and crashes
-  - Market clearing
-
 - **`production/`** — Output generation
-  - Production functions
-  - Technology level constraints
-  - Resource requirements
-  - Labor productivity
-  - Capital efficiency
-
 - **`trade/`** — Exchange systems
-  - Trade routes
-  - Tariffs and barriers
-  - War disruption
-  - Comparative advantage
-  - Currency exchange
-
 - **`labor/`** — Workforce dynamics
-  - Wages and compensation
-  - Unemployment
-  - Job mobility
-  - Skill requirements
-  - Labor markets
-
 - **`shocks/`** — Economic crises
-  - Wars and conflicts
-  - Droughts and famines
-  - Pandemics
-  - Bank runs
-  - Resource depletion
-
 - **`forecasts/`** — Forward scenario generation
-  - Signal-based predictions
-  - Multiple plausible futures
-  - Probability distributions
-  - Sensitivity analysis
 
 ## Integration
 

@@ -5,24 +5,8 @@ Debugging the simulation — logs, metrics, and inspector tools.
 ## Structure
 
 - **`logs/`** — Structured logging
-  - Simulation event logs
-  - Error tracking
-  - Debug information
-  - Audit trails
-
 - **`metrics/`** — Performance and behavior metrics
-  - Economy statistics
-  - Political indicators
-  - NPC behavior stats
-  - System performance
-  - Realism metrics
-
 - **`inspector/`** — Internal admin panel
-  - Pause/step simulation
-  - View agent states
-  - Inspect world state
-  - Debug tools
-  - State visualization
 
 ## Purpose
 

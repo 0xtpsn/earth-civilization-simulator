@@ -5,30 +5,9 @@ Database connectors and repositories — keeps storage cleanly decoupled from lo
 ## Structure
 
 - **`postgres/`** — Structured data storage
-  - World state
-  - NPC data
-  - Economic data
-  - Historical records
-  - Relational schemas
-
 - **`vector-db/`** — Embedding storage (via pgvector)
-  - Memory embeddings
-  - Knowledge embeddings
-  - Semantic search
-  - Similarity queries
-  - Uses PostgreSQL pgvector extension (integrated with postgres/)
-
 - **`cache/`** — Fast access layer
-  - Redis or similar
-  - Frequently accessed data
-  - Session state
-  - Performance optimization
-
 - **`migrations/`** — Schema versioning
-  - Database migrations
-  - Schema evolution
-  - Version control
-  - Rollback support
 
 ## Design
 

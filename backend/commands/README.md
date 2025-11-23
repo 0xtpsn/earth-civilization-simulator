@@ -5,30 +5,9 @@ All player/auditor commands, decoupled from client — the command layer that an
 ## Structure
 
 - **`registry/`** — Command definitions
-  - List of all supported commands
-  - `/timejump` — Jump to different time
-  - `/spawn` — Spawn NPCs or items
-  - `/sleep` — Fast-forward time
-  - `/inspect` — View world state
-  - Command metadata
-
 - **`parsers/`** — Input parsing
-  - Parse client input into structured actions
-  - Handle different input formats
-  - Validate command syntax
-  - Extract parameters
-
 - **`actions/`** — Command execution
-  - Actual effects injected into simulation
-  - Integration with simulation engine
-  - Side effects handling
-  - Result generation
-
 - **`permissions/`** — Access control
-  - What's allowed in what mode
-  - God mode vs survival mode
-  - Role-based permissions
-  - Era-appropriate restrictions
 
 ## Design Philosophy
 
